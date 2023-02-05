@@ -2,7 +2,7 @@
 
 int main (){
     int a = 1, b = -4, c = 4, D = b*b - 4*a*c;
-if (D < 0) {std::cout << "Нет корней" << std::endl;
+if (D < 0) {std::cout << "Нет корней." << std::endl;
 } 
 else if (D == 0) {std::cout << "x = " << -b/(2*a) << std::endl;
 } 
