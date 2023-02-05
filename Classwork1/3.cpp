@@ -2,7 +2,7 @@
 int main() {
     int a = 60, b = 50, r1;
     if (a%b == 0){
-       std::cout << "НОД двух чисел равен " <<b << std::endl; 
+       std::cout << " НОД двух чисел равен " <<b << std::endl; 
     }
     else{
     while (a%b != 0) {
