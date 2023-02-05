@@ -8,9 +8,9 @@ int main (){
         } 
     } 
     if (del == 0) {
-        std::cout <<"Число простое" <<std::endl;
+        std::cout <<"Число простое." <<std::endl;
     }
     else {
-        std::cout << "Число не является простым" << std::endl;
+        std::cout << "Число не является простым." << std::endl;
     }
 }
