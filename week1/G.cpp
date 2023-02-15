@@ -15,7 +15,7 @@ int min_or_max (int n){
                 if (b < a && c > b){
                     min = min + 1;
                 }
-                if (b > a && a < b){
+                if (b > a && b > c){
                     max = max + 1;
                 }
                 if (i==n){
@@ -37,11 +37,13 @@ int min_or_max (int n){
 }
 int main() {
     int n;
+
     cin >> n;
-    if (min_or_max(n) == 1){
+    int result = min_or_max(n);
+    if (result == 1){
         cout << "MAX";
     }
-    else if (min_or_max(n) == -1){
+    else if (result == -1){
         cout << "MIN";
     }
     else {
