@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 #ifndef N
-#define N 2 // actual size of the array
+#define N 10 // actual size of the array
 #endif
 
 void read_array(int (&a)[N]){
