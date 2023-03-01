@@ -19,7 +19,7 @@ void read_array(int (&a)[N]){
         cin >> a[i];
     }
 }
-void choice_sort(int (&a)[N]){
+void selectSort(int (&a)[N]){
     int index_of_max;
     for(int i = N-1; i >= 0; i = i - 1){
         index_of_max = i;
@@ -36,6 +36,6 @@ void choice_sort(int (&a)[N]){
 int main(){
     int a[N];
     read_array(a);
-    choice_sort(a);
+    selectSort(a);
     print_array(a);
 }
