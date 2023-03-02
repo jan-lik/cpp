@@ -24,7 +24,7 @@ void print_array(int (&a)[N]){
 }
 
 //функция шейкерной сортировки
-void ShakerSort(int (&a)[N], unsigned const begin_idx, unsigned const end_idx){
+void shaker_sort(int (&a)[N], unsigned const begin_idx, unsigned const end_idx){
     int left = begin_idx;
     int right = end_idx;
     while (left <= right){
@@ -50,6 +50,6 @@ int main(){
     read_array(a);
     cout << "print begin_idx and end_idx" << endl;
     cin >> begin_idx >> end_idx;
-    ShakerSort(a, begin_idx, end_idx);
+    shaker_sort(a, begin_idx, end_idx);
     print_array(a);
 }
