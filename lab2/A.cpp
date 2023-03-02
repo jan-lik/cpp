@@ -3,7 +3,7 @@
 #include <random>
 using namespace std;
 #ifndef N
-#define N 10 // actual size of the array
+#define N 5 // actual size of the array
 #endif
 #include <iostream>
 //функция обмена
@@ -22,23 +22,27 @@ void print_array(int (&a)[N]){
         cout << a[i] << " ";
     }
 }
-
-//функция шейкерной сортировки
+void forward_step(int (&a)[N], int left, int right){
+    for (int i = left; i < right; i++){
+        if (a[i] > a[i+1]){
+            swap(a[i], a[i+1]);
+        }
+    }
+}
+void backward_step(int (&a)[N], int left, int right){
+    for (int i = right; i > left; i--){
+        if (a[i-1] > a[i]) {
+            swap(a[i-1], a[i]);
+        }
+    }
+}
 void shaker_sort(int (&a)[N], unsigned const begin_idx, unsigned const end_idx){
     int left = begin_idx;
     int right = end_idx;
     while (left <= right){
-        for (int i = right; i > left; i--){
-            if (a[i-1] > a[i]) {
-                swap(a[i-1], a[i]);
-            }
-        }
+        backward_step(a, begin_idx, end_idx);
         left++;
-        for (int i = left; i < right; i++){
-            if (a[i] > a[i+1]){
-                swap(a[i], a[i+1]);
-            }
-        }
+        forward_step(a, begin_idx, end_idx);
         right--;
     }
 }
