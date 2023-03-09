@@ -3,7 +3,7 @@
 #include <random>
 using namespace std;
 #ifndef N
-#define N 5 // actual size of the array
+#define N 20 // actual size of the array
 #endif
 #include <iostream>
 //функция обмена
@@ -49,11 +49,17 @@ void shaker_sort(int (&a)[N], unsigned const begin_idx, unsigned const end_idx){
 int main(){
     // begin_idx -- индекс нулевого элемента массива, который необходимо отсортировать
     // end_idx -- индекс последнего элемента массива, который необходимо отсортировать
-    int a[N], begin_idx, end_idx;
-    cout << "print your array" << endl;
-    read_array(a);
-    cout << "print begin_idx and end_idx" << endl;
-    cin >> begin_idx >> end_idx;
+    int a[N];
+    int begin_idx = 0;
+    int end_idx = N - 1;
+    unsigned seed = 5;
+    std::default_random_engine rng(seed);
+    std::uniform_int_distribution<unsigned> dstr(0 , 100);
+    for (int j = 0; j <N; j++){
+        a[j] =   dstr(rng);
+    }
+    print_array(a);
+    cout << endl;
     shaker_sort(a, begin_idx, end_idx);
     print_array(a);
 }
