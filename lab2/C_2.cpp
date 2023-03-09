@@ -12,7 +12,7 @@ void swap(int &a, int &b){
     b = tmp;
 }
 int shell_sort (int(&a)[N], unsigned real_size, int &kolvo_swaps){
-    for (int step = (int)(log2(N+1)); step > 0; step = (step - 1)/2){
+    for (int step = (int)(log2(N+1)); step > 0; step = ((step + 1)/2)-1){
         for (int i = step; i < real_size; i = i + 1){
             for (int j = i - step; (j >= 0) and (a[j]>a[j+step]); j = j - step){
                 swap(a[j], a[j + step]);

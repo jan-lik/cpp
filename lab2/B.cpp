@@ -21,13 +21,13 @@ int comb_sort (int(&a)[N], unsigned real_size, int &kolvo_swaps){
                 kolvo_swaps = kolvo_swaps + 1;
             }
         }
-        step = step - 1;
+        step = step /2;
     }
 }
 
 int time_count(int(&a)[N], unsigned real_size, int kolvo_swaps){
     auto begin = std::chrono::steady_clock::now();
-    for(unsigned cnt = 10; cnt != 0 ; --cnt)
+    for(unsigned cnt = 1000; cnt != 0 ; --cnt)
         comb_sort(a, real_size, kolvo_swaps);
     auto end = std::chrono::steady_clock::now();
     auto time_span =
