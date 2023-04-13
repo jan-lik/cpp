@@ -4,7 +4,7 @@
 #include <ctime>
 using namespace std;
 #ifndef N
-#define N 25// actual size of the array
+#define N 50// actual size of the array
 #endif
 std::mt19937 gen(static_cast<unsigned>(time(nullptr))); // seed the generator
 int dice(int min, int max){
@@ -46,25 +46,27 @@ void stop_cells(int (&mas)[N][N], int real_size){
         for(int j = 0; j < real_size; ++j){
             // проверка, находится ли дислокация около края кристалла
             if((i == 0) || (j == 0) || (i == real_size-1) || (j == real_size-1)){
-                mas[i][j] = 0;
+                if (mas[i][j] == 1){
+                    mas[i][j] = -1;
+            }
             }
             // проверка, находятся ли две дислокации рядом
             if (mas[i][j] == 1){
                 if (mas[i][j] == mas[i+1][j]){
-                    mas[i][j] = 0;
-                    mas[i+1][j] = 0;
+                    mas[i][j] = -1;
+                    mas[i+1][j] = -1;
                 }
                 if (mas[i][j] == mas[i-1][j]){
-                    mas[i][j] = 0;
-                    mas[i-1][j] = 0;
+                    mas[i][j] = -1;
+                    mas[i-1][j] = -1;
                 }    
                 if (mas[i][j] == mas[i][j+1]){
-                    mas[i][j] = 0;
-                    mas[i][j+1] = 0;
+                    mas[i][j] = -1;
+                    mas[i][j+1] = -1;
                 } 
                 if (mas[i][j] == mas[i][j-1]){
-                    mas[i][j] = 0;
-                    mas[i][j-1] = 0;
+                    mas[i][j] = -1;
+                    mas[i][j-1] = -1;
                 }
             } 
         }

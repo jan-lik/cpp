@@ -4,7 +4,7 @@
 #include <ctime>
 using namespace std;
 #ifndef N
-#define N 500// actual size of the array
+#define N 50// actual size of the array
 #endif
 // одномерный кристалл, меняется размер массива
 std::mt19937 gen(static_cast<unsigned>(time(nullptr))); // seed the generator
@@ -22,17 +22,19 @@ void stop_cells(int (&mas)[N], int real_size){
     for (int i = 0; i < real_size; i++){
             // проверка, находится ли дислокация около края кристалла
             if((i == 0) || (i == real_size-1) ){
-                mas[i]= 0;
+                if(mas[i] == 1){
+                mas[i]= -1;
+            }
             }
             // проверка, находятся ли две дислокации рядом
             if (mas[i] == 1){
                 if (mas[i] == mas[i+1]){
-                    mas[i] = 0;
-                    mas[i+1] = 0;
+                    mas[i] = -1;
+                    mas[i+1] = -1;
                 }
                 if (mas[i] == mas[i-1]){
-                    mas[i] = 0;
-                    mas[i-1] = 0;
+                    mas[i] = -1;
+                    mas[i-1] = -1;
                 }    
             } 
     }
@@ -76,7 +78,7 @@ void alive_world(int (&mas)[N], int real_size, int &move){
 }
 int time_count( int (&mas)[N], int real_size, int &move){
     auto begin = std::chrono::steady_clock::now();
-    for(unsigned cnt = 1000; cnt != 0 ; --cnt)
+    for(unsigned cnt = 10000; cnt != 0 ; --cnt)
         alive_world(mas, real_size, move);
     auto end = std::chrono::steady_clock::now();
     auto time_span =
@@ -88,7 +90,7 @@ int main(){
     freopen("OUT_Third_second.txt", "w", stdout);
     int mas[N];
     int real_size = N;
-    for (int real_size = 10; real_size < N; real_size = real_size + 10){
+    for (int real_size = 1; real_size < N; real_size = real_size + 1){
         int move = 1;
         while (move != 0){
             time_count(mas, real_size, move);

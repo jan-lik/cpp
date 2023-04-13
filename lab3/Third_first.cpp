@@ -42,17 +42,19 @@ void stop_cells(int (&mas)[N], int real_size){
     for (int i = 0; i < real_size; i++){
             // проверка, находится ли дислокация около края кристалла
             if((i == 0) || (i == real_size-1) ){
-                mas[i]= 0;
+                if (mas[i] == 1){
+                mas[i]= -1;
+            }
             }
             // проверка, находятся ли две дислокации рядом
             if (mas[i] == 1){
                 if (mas[i] == mas[i+1]){
-                    mas[i] = 0;
-                    mas[i+1] = 0;
+                    mas[i] = -1;
+                    mas[i+1] = -1;
                 }
                 if (mas[i] == mas[i-1]){
-                    mas[i] = 0;
-                    mas[i-1] = 0;
+                    mas[i] = -1;
+                    mas[i-1] = -1;
                 }    
             } 
     }
